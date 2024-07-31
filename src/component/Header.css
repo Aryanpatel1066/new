@@ -1,0 +1,21 @@
+nav{
+    border:2px solid violet;
+    /* display: flex;
+    justify-content: space-between; */
+}
+.navLogo{
+     /* border:2px solid red; */
+     font-size: 1.3em;
+     cursor:pointer;
+     text-decoration: none;
+}
+.navLinks{
+    color:blue;
+    padding: 9px;
+    font-size: 1.3em;
+    text-decoration: none;
+    cursor: pointer;
+}
+.leftCournerLink{
+     /* border:3px solid black; */
+ }
