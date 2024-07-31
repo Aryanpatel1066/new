@@ -1,21 +1,70 @@
-nav{
-    border:2px solid violet;
-    /* display: flex;
-    justify-content: space-between; */
+:root {
+    --primaryColor: #7e22ce;
+    --lightpurple: #faf5ff;
 }
-.navLogo{
-     /* border:2px solid red; */
-     font-size: 1.3em;
-     cursor:pointer;
-     text-decoration: none;
+
+body {
+    font-family: Roboto, sans-serif;
 }
-.navLinks{
-    color:blue;
-    padding: 9px;
+
+nav {
+    border: 2px solid violet;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navLogo {
+    /* border:2px solid red; */
     font-size: 1.3em;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--primaryColor);
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.navLinks {
+    padding: 9px;
+    font-size: 22px;
     text-decoration: none;
     cursor: pointer;
+    color: var(--primaryColor);
+    font-weight: 900;
+
 }
-.leftCournerLink{
-     /* border:3px solid black; */
- }
+
+.leftCournerLink {
+    /* border:3px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.inputBox {}
+
+.inputBox .searchIcon {
+    position: absolute;
+    top: 10px;
+    font-size: 22px;
+    margin: 5px;
+    color: var(--primaryColor);
+}
+
+.inputBox .searchBar {
+    font-size: 14px;
+    font-weight: 900;
+    padding: .6rem 2.5rem;
+    outline: none;
+    box-sizing: border-box;
+    /* border: 1px solid gray; */
+    border-radius: 4px;
+    border: none;
+    border: 1px solid gray;
+    background-color: var(--lightpurple);
+}
+
+.inputBox .searchBar:focus {
+    border: 2px solid var(--primaryColor)
+}
