@@ -7,7 +7,7 @@ body {
     font-family: Roboto, sans-serif;
 }
 
-nav {
+.navbar {
     border: 2px solid violet;
     display: flex;
     justify-content: space-between;
@@ -42,12 +42,10 @@ nav {
     gap: 30px;
 }
 
-.inputBox {}
-
+ 
 .inputBox .searchIcon {
     position: absolute;
-    top: 10px;
-    font-size: 22px;
+     font-size: 22px;
     margin: 5px;
     color: var(--primaryColor);
 }
