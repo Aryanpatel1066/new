@@ -16,7 +16,7 @@
     color:var(--fontColor);
     text-align: center;
     padding:10px 20px;
-    animation:  moveUp 3s infinite linear,blink 1s 1;
+    animation:blink 1.5s infinite;
 
   }
   .topNavBar .removeIcon{
@@ -36,14 +36,4 @@
       opacity: 0;
     }
   }
-  
-  @keyframes moveUp {
-    0% {
-      transform: translateY(40%);
-    }
-    100% {
-      transform: translateY(-10%);
-    }
-  }
-  
-  
+   

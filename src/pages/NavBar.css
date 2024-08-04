@@ -1,10 +1,14 @@
 :root {
     --primaryColor: #7e22ce;
     --lightpurple: #faf5ff;
+    --lightBackGroundColor:#d8b4fe;
 }
 
 body {
     font-family: Roboto, sans-serif;
+}
+.navBarWithBg{
+    background-color:var(--lightBackGroundColor);
 }
 
 .navbar {
