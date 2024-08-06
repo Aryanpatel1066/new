@@ -1,0 +1,8 @@
+ .heroHeaderContainer{
+    border:2px solid red;
+    box-sizing: border-box;
+  }
+  .heroHeaderContainer .heroImg{
+     height: 400px;
+    width: 100%;
+}
