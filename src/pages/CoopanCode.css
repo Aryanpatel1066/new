@@ -1,0 +1,13 @@
+.infoProductContainer{
+    border:2px solid red;
+    margin:0 1rem;
+}
+.infoProductContainer .infoHeading{
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: sans-serif;
+    padding:10px;
+}
+.infoProductContainer .twoSubCoopanContainer{
+    
+}
