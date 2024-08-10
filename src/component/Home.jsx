@@ -5,14 +5,14 @@ import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-
 import HeroSection from "../pages/HeroSection";
 import CoopanCode from "../pages/CoopanCode";
 import "./Home.css";
+import Footer from "../pages/Footer";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <CoopanCode />
-
-      {/* Newsletter Section */}
+       {/* Newsletter Section */}
       <div className="newsLetterContainer">
         <h2>Newsletter</h2>
         <p>Get timely updates from your favorite products.</p>
@@ -59,6 +59,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
+
+      <Footer/>
+     </>
   );
 }
