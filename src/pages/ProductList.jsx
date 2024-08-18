@@ -1,16 +1,17 @@
 import { ProductDB } from "../data/productDb";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faStar ,faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import "./ProductList.css";
-import FilterBar from "./FilterBar";
+import FilterBar from "../component/Filterbar";
 import Loading from "./Loading";
 
 export default function ProductList() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
+    const [search,setSearch]=useState(" ");
+    
     async function getData() {
         try {
             setLoading(true);
@@ -31,12 +32,19 @@ export default function ProductList() {
 
     return (
         <>
+        {/* searchbox */}
+        <div className="inputBox">
+          <FontAwesomeIcon className="searchIcon" icon={faMagnifyingGlass} />
+          <input className="searchBar" placeholder="search on StyleSavvy" />
+        </div>
+{/* aside filterbar */}
+<div className="parentComponent">
+<FilterBar/>
      {loading && <Loading />}
             {error && <p className="error-message">{error}</p>}
             {!loading && !error && (
                 <>
-                    <h1>Product List Page</h1>
-                    {/* <FilterBar /> */}
+                     {/* <FilterBar /> */}
                     <ul className="product-grid">
                         {data.map((item) => (
                             <li key={item.id}>
@@ -71,6 +79,7 @@ export default function ProductList() {
                     </ul>
                 </>
             )}
+            </div>
         </>
     );
 }
