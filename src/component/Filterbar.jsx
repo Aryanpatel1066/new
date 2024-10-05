@@ -1,6 +1,6 @@
 import "./Filterbar.css"
 import { NavLink } from "react-router-dom";
- 
+ import "./Filterbar.css"
 export default function FilterBar(){
     return(
         <>
@@ -25,23 +25,24 @@ export default function FilterBar(){
                 </label>
                 <h2>Ratings</h2>
                 <label>
-                    <input type="radio"/>4 and above
+                    <input type="radio" name="rating"/>4 and above
                 </label>
                 <label>
-                    <input type="radio"/>3 and above
+                    <input type="radio" name="rating"/>3 and above
                 </label> <label>
-                    <input type="radio"/>2 and above
+                    <input type="radio" name="rating"/>2 and above
                 </label> <label>
-                    <input type="radio"/>1 and above
+                    <input type="radio" name="rating"/>1 and above
                 </label>
                 <h2>sort by price</h2>
                  <label>
-                    <input type="radio"/>high to low
+                    <input type="radio" name="sort"/>high to low
                  </label>
                  <label>
-                    <input type="radio"/>low to high</label>
+                    <input type="radio" name="sort"/>low to high</label>
             </div>
         </div>
         </>
     )
 }
+
