@@ -9,7 +9,8 @@ import {
 import "./ProductList.css";
 import FilterBar from "../component/Filterbar";
 import Loading from "./Loading";
-
+import ProductDetails from "./ProductDetails";
+import { NavLink } from "react-router-dom";
 export default function ProductList() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -66,6 +67,8 @@ export default function ProductList() {
               {filteredData.length > 0 ? (
                 filteredData.map((item) => (
                   <li key={item.id}>
+                                      <NavLink to={`/productdetails/${item.id}`}>
+
                     <div className="outerProductContainer">
                       <img src={item.image} alt={item.title} />
                       <div className="nameAndRatinCotainer">
@@ -93,6 +96,7 @@ export default function ProductList() {
                         Add to Cart
                       </button>
                     </div>
+                    </NavLink>
                   </li>
                 ))
               ) : (

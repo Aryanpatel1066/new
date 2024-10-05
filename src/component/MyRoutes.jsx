@@ -1,9 +1,10 @@
+import { Routes,Route } from "react-router-dom"
 import Cart from "../pages/Cart"
 import Login from "../pages/Login"
 import ProductList from "../pages/ProductList"
 import Home from "./Home"
 import NotFound from "../pages/NotFound"
-import { Routes,Route } from "react-router-dom"
+import ProductDetails from "../pages/ProductDetails"
 export default function MyRoutes(){
     return(
         <>
@@ -13,6 +14,7 @@ export default function MyRoutes(){
           <Route path="/products" element={<ProductList/>}/>
           <Route path="/" element={<Home/>}/>
           <Route path="*" element={<NotFound/>}/>
+          <Route path="/productdetails/:id" element={<ProductDetails/>}/>
         </Routes>
         
         </>
