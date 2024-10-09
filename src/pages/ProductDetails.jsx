@@ -4,11 +4,11 @@ import { ProductDB } from "../data/productDb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
-   faStar,
- } from "@fortawesome/free-solid-svg-icons"; 
+  faStar, faTag, faCartShopping
+} from "@fortawesome/free-solid-svg-icons";
 import "./productDetails.css"
 const ProductDetails = () => {
-  const { id } = useParams();  
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -37,19 +37,47 @@ const ProductDetails = () => {
 
   return (
     <div className="productDetails">
-       <div className="productDetailsLeftPart">
-       <img src={product.image} alt={product.title} />
-        </div>
-        <div className="productDetailsRightPart">
-      <h1 className="productHeading">{product.title}</h1>
-      <p className="productDescription">{product.description}</p>
-      <div className="ratingBox">
-      <p className="ratingText">Rating: {product.reting}</p><FontAwesomeIcon className="starIcon" icon={faStar}/>
+      <div className="productDetailsLeftPart">
+        <img src={product.image} alt={product.title} />
       </div>
-      <p>Price: ₹{product.price}</p>
-      <p>Size: {product.size}</p>
-      <p>Discount: {product.is_off}% off</p>
-      </div> 
+      <div className="productDetailsRightPart">
+        <h1 className="productHeading">{product.title}</h1>
+        <p className="productDescription">{product.description}</p><div className="combineRatingSize">
+          <div className="ratingBox">
+            <p className="ratingText">Rating: {product.reting}</p><FontAwesomeIcon className="starIcon" icon={faStar} />
+          </div>
+          <div className="sizeProduct2">( size: {product.size})</div></div>
+        <div className="productContent2">
+          <div className="productPrice">
+            MRP: <span> ₹{product.price}</span>
+          </div>
+          <div className="productOffPrice">
+            ₹{product.cancel_price}
+          </div>
+          <div className="productOff">| {product.is_off}% off</div>
+        </div>
+        <div className="grayLine"></div>
+        <div className="moreDetailBox">
+          <div className="moreDetailText">
+            <span className="facilitiesIcon2">            <FontAwesomeIcon icon={faTag} /></span>
+            Fastest Delivery</div>
+          <div className="moreDetailText">
+            <span className="facilitiesIcon2">            <FontAwesomeIcon icon={faTag} /></span>
+            Inclusive of All Taxes</div>
+          <div className="moreDetailText"><span className="facilitiesIcon2">
+            <FontAwesomeIcon icon={faTag} /></span>
+            Cash On Delivery Available</div>
+
+        </div>
+        <div className="grayLine"></div>
+        <button className="cartButton">
+          <FontAwesomeIcon
+            className="cartIcon"
+            icon={faCartShopping}
+          />
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 };

@@ -67,35 +67,35 @@ export default function ProductList() {
               {filteredData.length > 0 ? (
                 filteredData.map((item) => (
                   <li key={item.id}>
-                                      <NavLink to={`/productdetails/${item.id}`}>
+                    <NavLink to={`/productdetails/${item.id}`}>
 
-                    <div className="outerProductContainer">
-                      <img src={item.image} alt={item.title} />
-                      <div className="nameAndRatinCotainer">
-                        <p className="productName">{item.title}</p>
-                        <div className="ratingAndStarContainer">
-                          <p className="ratingText">{item.reting}</p>
-                          <FontAwesomeIcon icon={faStar} className="starIcon" />
+                      <div className="outerProductContainer">
+                        <img src={item.image} alt={item.title} />
+                        <div className="nameAndRatinCotainer">
+                          <p className="productName">{item.title}</p>
+                          <div className="ratingAndStarContainer">
+                            <p className="ratingText">{item.reting}</p>
+                            <FontAwesomeIcon icon={faStar} className="starIcon" />
+                          </div>
                         </div>
+                        <div className="sizeProduct">( size: {item.size})</div>
+                        <div className="productContent">
+                          <div className="productPrice">
+                            MRP: <span> ₹{item.price}</span>
+                          </div>
+                          <div className="productOffPrice">
+                            ₹{item.cancel_price}
+                          </div>
+                          <div className="productOff">| {item.is_off}% off</div>
+                        </div>
+                        <button className="cartButton">
+                          <FontAwesomeIcon
+                            className="cartIcon"
+                            icon={faCartShopping}
+                          />
+                          Add to Cart
+                        </button>
                       </div>
-                      <div className="sizeProduct">( size: {item.size})</div>
-                      <div className="productContent">
-                        <div className="productPrice">
-                          MRP: <span> ₹{item.price}</span>
-                        </div>
-                        <div className="productOffPrice">
-                          ₹{item.cancel_price}
-                        </div>
-                        <div className="productOff">| {item.is_off}% off</div>
-                      </div>
-                      <button className="cartButton">
-                        <FontAwesomeIcon
-                          className="cartIcon"
-                          icon={faCartShopping}
-                        />
-                        Add to Cart
-                      </button>
-                    </div>
                     </NavLink>
                   </li>
                 ))
