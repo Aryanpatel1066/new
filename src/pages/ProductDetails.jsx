@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ProductDB } from "../data/productDb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { NavLink } from "react-router-dom";
 import {
   faStar, faTag, faCartShopping
 } from "@fortawesome/free-solid-svg-icons";
@@ -35,7 +35,7 @@ const ProductDetails = () => {
   if (error) return <p>{error}</p>;
   if (!product) return <p>Product not found</p>;
 
-  return (
+  return (<div>
     <div className="productDetails">
       <div className="productDetailsLeftPart">
         <img src={product.image} alt={product.title} />
@@ -78,6 +78,8 @@ const ProductDetails = () => {
           Add to Cart
         </button>
       </div>
+    </div>
+    <NavLink className="link"to="/products">View More Products ...</NavLink>
     </div>
   );
 };
