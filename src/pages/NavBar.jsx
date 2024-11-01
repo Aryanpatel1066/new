@@ -1,10 +1,11 @@
-
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faBagShopping, faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
+import { CartContext } from "../context/CartContext";
 import "./NavBar.css";
-
 export default function NavBar({ isOfferBarVisible }) {
+  const {cartItem}=useContext(CartContext);
   return (
     <nav className={`navbar ${isOfferBarVisible ? '' : 'navBarWithBg'}`}>
       <div className="navLogo">
@@ -24,7 +25,7 @@ export default function NavBar({ isOfferBarVisible }) {
           <FontAwesomeIcon icon={faBagShopping} />
         </NavLink>{" "}
         <NavLink className="navLinks" to="/cart">
-          <FontAwesomeIcon icon={faCartShopping} />
+          <FontAwesomeIcon icon={faCartShopping} /><sup>{cartItem.length}</sup>
         </NavLink>{" "}
         <NavLink className="navLinks" to="/login">
           <FontAwesomeIcon icon={faUser} />
