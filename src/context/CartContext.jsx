@@ -20,14 +20,25 @@ export const CartProvider = ({ children }) => {
         }
     };
 
-    // Function to remove an item from the cart
-    const removeFromCart = (productId) => {
-        setCartItem(cartItem.filter(item => item.id !== productId));
+    // Function to decrease the quantity of an item in the cart
+    const decreaseQuantity = (id) => {
+        setCartItem(cartItem.map(item => {
+            if (item.id === id) {
+                return item.quantity > 1
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item;   
+            }
+            return item;
+        }));
     };
 
-     
+    // Function to completely remove an item from the cart
+    const removeFromCart = (id) => {
+        setCartItem(cartItem.filter(item => item.id !== id));
+    };
+
     return (
-        <CartContext.Provider value={{ cartItem, addToCart, removeFromCart }}>
+        <CartContext.Provider value={{ cartItem, addToCart, decreaseQuantity, removeFromCart }}>
             {children}
         </CartContext.Provider>
     );
