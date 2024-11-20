@@ -57,8 +57,42 @@
   }
   
   .cart-total-price {
-    font-size: 20px;
-    text-align: right;
+    font-size: 30px;
+    text-align: center;
     margin-top: 20px;
   }
-  
+  .emptyImg{
+    height: 256px;
+    width: 384px;
+    margin: 10px auto;
+     
+}
+.cartEmptyHeading{
+    color:#7E22CE;
+    font-size: 700;
+}
+.cartEmptyDescription{
+    font-size: 1.2rem;
+    color:#000;
+    margin:20px 0;
+}
+.cartEmptyButton{
+    background-color:#7E22CE;
+    width: 120px;
+    height: 37px;
+    border-radius: 5px;
+    border:none;
+    color:#fff;
+ }
+ .cartEmptyLink{
+    color:#fff;
+    text-decoration: none;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 800;
+ }
+ .cartEmptyContainer{
+/* border: 1px solid black; */
+text-align: center;
+  }
+ 

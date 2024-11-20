@@ -1,7 +1,9 @@
 import { useContext } from "react";
+import {NavLink} from "react-router-dom"
 import { CartContext } from "../context/CartContext";
 import "../App.css";
 import "./Cart.css"
+import cartEmptyImg from "../assets/cartEmptyImg.webp";
 export default function Cart() {
   const { cartItem, addToCart, removeFromCart,decreaseQuantity } = useContext(CartContext);
 
@@ -13,14 +15,26 @@ export default function Cart() {
 
   return (
     <>
-      <h1 className="cart-title">Cart Page</h1>
-
+ 
       {/* Display total items in cart */}
-      <h1 className="cart-total-items">Total items in cart: {cartItem.length}</h1>
+      <h1 className="cart-title">Total items in cart: {cartItem.length}</h1>
 
       {/* Check if cart is empty */}
       {cartItem.length === 0 ? (
-        <p className="empty-cart-message">Your cart is empty.</p>
+        <div>
+           <div className="cartEmptyContainer">
+            {" "}
+            <img className="emptyImg" src={cartEmptyImg} />
+            <p className="cartEmptyDescription">
+              Explore exclusive products and add your favourites to Wishlist!
+            </p>
+            <button className="cartEmptyButton">
+              <NavLink className="cartEmptyLink" to="/products">
+                Shop Now
+              </NavLink>
+            </button>
+          </div>
+         </div>
       ) : (
         <div className="cart-items">
           {/* List each item in the cart */}
