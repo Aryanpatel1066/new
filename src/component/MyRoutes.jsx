@@ -4,7 +4,9 @@ import Login from "../pages/Login"
 import ProductList from "../pages/ProductList"
 import Home from "./Home"
 import NotFound from "../pages/NotFound"
+import Register from "../pages/Register"
 import ProductDetails from "../pages/ProductDetails"
+import Profile from "../pages/Profile"
 export default function MyRoutes(){
     return(
         <>
@@ -15,6 +17,8 @@ export default function MyRoutes(){
           <Route path="/" element={<Home/>}/>
           <Route path="*" element={<NotFound/>}/>
           <Route path="/productdetails/:id" element={<ProductDetails/>}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
         
         </>
