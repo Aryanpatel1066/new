@@ -1,0 +1,44 @@
+.profileContainer{
+    border:2px solid red;
+      
+}
+.profileHeading{
+     font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 2rem 0;
+ }
+  .tabContainer{
+   width:490px;
+   height: 170px;
+   border:2px solid red;
+
+  }
+  ul{
+   background-color: blueviolet;
+   list-style: none;
+   display: flex;
+   justify-content: space-around;
+   color:#fff;
+  }
+  .tab ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+  }
+  
+  .tab ul li {
+    margin-right: 20px;
+  }
+  
+  .tab ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .active-tab {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+  }
+  

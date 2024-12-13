@@ -1,21 +1,39 @@
 import React from "react";
-import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { NavLink, Outlet } from "react-router-dom";
+import "./Profile.css";
 
 const Profile = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    auth.signOut();
-    toast.info("Logged out successfully!");
-    navigate("/login");
-  };
-
   return (
-    <div>
-      <h2>Welcome, {auth.currentUser?.email}</h2>
-      <button onClick={handleLogout}>Logout</button>
+    <div className="profileContainer">
+      <h1 className="profileHeading">Account Details</h1>
+
+      <div className="tabContainer">
+        <div className="tab">
+          <ul>
+            <li>
+              <NavLink 
+                to="userDetails" // Use relative path to work with nested routes
+                className={({ isActive }) => (isActive ? "active-tab" : "")}
+              >
+                User Details
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="addressDetails" 
+                className={({ isActive }) => (isActive ? "active-tab" : "")}
+              >
+                Address Details
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+
+        {/* Dynamic content loads here */}
+        <div className="mainBodyContainer">
+          <Outlet /> {/* Renders the default or selected route content */}
+        </div>
+      </div>
     </div>
   );
 };
