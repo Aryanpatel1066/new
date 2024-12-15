@@ -9,7 +9,7 @@ const Profile = () => {
 
       <div className="tabContainer">
         <div className="tab">
-          <ul>
+          <ul className="ul">
             <li>
               <NavLink 
                 to="userDetails" // Use relative path to work with nested routes
