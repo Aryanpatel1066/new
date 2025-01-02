@@ -7,13 +7,13 @@ export default function Footer(){
         <>
            <footer>
             <div className="headingPrivacyIcon">
-                <NavLink className="link">Terms & Condition</NavLink>
-                <NavLink className="link">Shipping Policy</NavLink>
-                <NavLink className="link">Cancellation Policy</NavLink>
-                <NavLink className="link">Privacy Policy</NavLink>
+                <NavLink className="linkPrivacy">Terms & Condition</NavLink>
+                <NavLink className="linkPrivacy">Shipping Policy</NavLink>
+                <NavLink className="linkPrivacy">Cancellation Policy</NavLink>
+                <NavLink className="linkPrivacy">Privacy Policy</NavLink>
             </div>
             <div className="copyRightSection">
-            Copyright 2023 Glamour.<FontAwesomeIcon icon={faCopyright} /> All Rights Reserved.
+            Copyright <FontAwesomeIcon icon={faCopyright} /> 2024 StyleSavvy. All Rights Reserved.
             </div>
            </footer>
         </>

@@ -1,7 +1,8 @@
+ 
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
-import { toast, ToastContainer, Bounce } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 import "./Register.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,34 +16,33 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
     if (password.length < 6) {
-      toast.warn("Password must be at least 6 characters long!", { /* options */ });
+      toast.warn("Password must be at least 6 characters long!", { position: "top-center" });
       return;
     }
     if (password !== confirmPassword) {
-      toast.warn("Passwords do not match!", { /* options */ });
+      toast.warn("Passwords do not match!", { position: "top-center" });
       return;
     }
 
     try {
+      // Register user
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-      await updateProfile(userCredential.user, {
-        displayName: name,
-      });
+      // Update display name
+      await updateProfile(user, { displayName: name });
 
-      toast.success("Registered successfully!", { /* options */ });
+      // Reload the current user to reflect changes
+      await user.reload();
 
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
+      toast.success("Registered successfully!", { position: "top-right", autoClose: 1500 });
       setTimeout(() => {
-        toast.dismiss();
-        navigate("/login");
-      }, 2000);
+        navigate("/profile"); // Redirect to profile after registration
+      }, 1000);
     } catch (error) {
-      toast.error("Error during registration", { /* options */ });
+      toast.error("Error during registration: " + error.message, { position: "top-center" });
     }
   };
 
@@ -86,9 +86,14 @@ const Register = () => {
           autoComplete="off"
           required
         />
-        <button className="register-button" type="submit">Register</button>
+        <button className="register-button" type="submit">
+          Register
+        </button>
         <p>
-          Already have an account? <Link to="/login" className="registerLink">Login</Link>
+          Already have an account?{" "}
+          <Link to="/login" className="registerLink">
+            Login
+          </Link>
         </p>
         <ToastContainer />
       </form>

@@ -1,21 +1,36 @@
-footer{
+ /* Optimized Footer CSS */
+footer {
     background-color: #3b0764;
-    margin:0 1rem;
+    margin: 0 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   padding: 1rem;
-}
-.headingPrivacyIcon{
+    padding: 1rem;
+  }
+  
+  .headingPrivacyIcon {
     display: flex;
-    gap: 10px;
-     padding: 1rem;
-}
-.headingPrivacyIcon .link{
-    color:#fff;
-
-}
-.copyRightSection{
-    color:#fff;
-}
+    gap: 1rem;
+    /* border: 2px solid red; */
+  }
+  
+  .headingPrivacyIcon .linkPrivacy {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .headingPrivacyIcon .link:hover {
+    text-decoration: underline;
+  }
+  
+  .copyRightSection {
+    color: #fff;
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 600;
+  }
+  

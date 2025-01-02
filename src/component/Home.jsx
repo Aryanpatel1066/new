@@ -18,7 +18,8 @@ export default function Home() {
         <p>Get timely updates from your favorite products.</p>
         <div className="inputContainer">
           <input placeholder="Your email" />
-          <button>Send</button>
+          <div className="sendEmail">
+          <button  id="send">Send</button></div>
         </div>
       </div>
 
