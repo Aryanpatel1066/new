@@ -7,9 +7,7 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import "./ProductList.css";
-import FilterBar from "../component/Filterbar";
 import Loading from "./Loading";
-import ProductDetails from "./ProductDetails";
 import { NavLink, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
@@ -18,6 +16,7 @@ export default function ProductList() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchInput, setSearchInput] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all"); // Track selected category
 
   const { cartItem, addToCart } = useContext(CartContext);
   const navigate = useNavigate(); // For navigation
@@ -44,14 +43,21 @@ export default function ProductList() {
     setSearchInput(event.target.value);
   };
 
-  // Filter the data based on the search input
-  const filteredData = data.filter((item) =>
-    item.title.toLowerCase().includes(searchInput.toLowerCase())
-  );
+  // Filter data based on search input and selected category
+  const filteredData = data.filter((item) => {
+    const matchesSearch = item.title
+      .toLowerCase()
+      .includes(searchInput.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "all" || item.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <>
-      <div className="inputBox">
+    <div className="centerSerachAndFilter">
+    {/* serach bar */}
+     <div className="inputBox">
         <FontAwesomeIcon className="searchIcon" icon={faMagnifyingGlass} />
         <input
           className="searchBar"
@@ -60,8 +66,47 @@ export default function ProductList() {
           onChange={handleSearch}
         />
       </div>
+      {/* Category Buttons */}
+      <div className="category-container">
+        <button
+          className={`category-button ${
+            selectedCategory === "all" ? "active" : ""
+          }`}
+          onClick={() => setSelectedCategory("all")}
+        >
+          All
+        </button>
+        <button
+          className={`category-button ${
+            selectedCategory === "men" ? "active" : ""
+          }`}
+          onClick={() => setSelectedCategory("men")}
+        >
+          Men
+        </button>
+        <button
+          className={`category-button ${
+            selectedCategory === "women" ? "active" : ""
+          }`}
+          onClick={() => setSelectedCategory("women")}
+        >
+          Women
+        </button>
+        <button
+          className={`category-button ${
+            selectedCategory === "kids" ? "active" : ""
+          }`}
+          onClick={() => setSelectedCategory("kids")}
+        >
+          Kids
+        </button>
+      </div>
+      </div>
+      {/* Search Bar */}
+     
+
+      {/* Product List */}
       <div className="parentComponent">
-        <FilterBar />
         {loading && <Loading />}
         {error && <p className="error-message">{error}</p>}
         {!loading && !error && (
@@ -69,7 +114,6 @@ export default function ProductList() {
             <ul className="product-grid">
               {filteredData.length > 0 ? (
                 filteredData.map((item) => {
-                  // Check if item is already in cart
                   const isInCart = cartItem.some(
                     (cartItem) => cartItem.id === item.id
                   );
@@ -104,17 +148,16 @@ export default function ProductList() {
                             </div>
                           </div>
                         </NavLink>
-
-                        {/* Conditionally render "Add to Cart" or "Go to Cart" button */}
                         {isInCart ? (
                           <button
                             className="cartButton"
                             onClick={() => navigate("/cart")}
                           >
-                            Go to Cart    <FontAwesomeIcon
+                            Go to Cart{" "}
+                            <FontAwesomeIcon
                               className="cartIcon"
                               icon={faCartShopping}
-                            /> 
+                            />
                           </button>
                         ) : (
                           <button

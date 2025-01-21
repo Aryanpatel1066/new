@@ -64,7 +64,7 @@ export default function NavBar({ isOfferBarVisible }) {
     <nav className={`navbar ${isOfferBarVisible ? '' : 'navBarWithBg'}`}>
       <div className="navLogo">
         <NavLink to="/" className="navLinks">
-          StyleSavvy
+          Shopyfy
         </NavLink>
       </div>
       <div className="leftCournerLink">
