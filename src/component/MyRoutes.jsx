@@ -9,7 +9,9 @@ import ProductDetails from "../pages/ProductDetails";
 import Profile from "../pages/Profile";
 import AddressDetail from "../pages/AddressDetail";
 import UserDetails from "../pages/UserDetails";
-
+import Checkout from "../pages/Checkout";
+import HandlePayment from "../pages/HandlePayment";
+import OrderSuccessFully from "../pages/OrderSuccessFully";
 export default function MyRoutes() {
   return (
     <Routes>
@@ -27,6 +29,11 @@ export default function MyRoutes() {
         <Route path="userDetails" element={<UserDetails />} />
         <Route path="addressDetails" element={<AddressDetail />} />
       </Route>
+      <Route path="/checkout" element={<Checkout/>}></Route>
+      <Route path="/handlepayment" element={<HandlePayment/>}/>
+      <Route path="/ordersuccessfully" element={
+        <OrderSuccessFully/>
+      }/>
     </Routes>
   );
 }

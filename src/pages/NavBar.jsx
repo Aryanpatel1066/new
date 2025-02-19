@@ -80,8 +80,9 @@ export default function NavBar({ isOfferBarVisible }) {
         {user ? (
           <>
             <NavLink className="navLinks" to="/profile">
-              {user?.displayName || "Profile"}
-            </NavLink>{" "}
+            <FontAwesomeIcon icon={faUser} />  
+
+             </NavLink>{" "}
             {/* <button className="logoutButton" onClick={logout}>
               Logout
             </button> */}

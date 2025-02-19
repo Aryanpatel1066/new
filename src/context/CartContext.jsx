@@ -1,45 +1,55 @@
 import { createContext, useState } from "react";
 
-// Step 2: Create and export CartContext
 export const CartContext = createContext();
 
-// Step 3: Define and export CartProvider
-export const CartProvider = ({ children }) => {
-    const [cartItem, setCartItem] = useState([]);
+export function CartProvider({ children }) {
+  const [cartItem, setCartItem] = useState([]);
 
-    // Function to add an item to the cart
-    const addToCart = (product) => {
-        const existingProduct = cartItem.find(item => item.id === product.id);
+  // Global Address State
+  const [userAddress, setUserAddress] = useState({
+    name: "Aryan Patel",
+    street: "98, Sundarpur, Vijapur",
+    city: "Gandhinagar",
+    state: "Gujarat",
+    country: "India",
+    pincode: "382860",
+    phone: "9173258040",
+  });
 
-        if (existingProduct) {
-            setCartItem(cartItem.map(item =>
-                item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-            ));
-        } else {
-            setCartItem([...cartItem, { ...product, quantity: 1 }]);
-        }
-    };
+  const addToCart = (item) => {
+    setCartItem([...cartItem, { ...item, quantity: 1 }]);
+  };
 
-    // Function to decrease the quantity of an item in the cart
-    const decreaseQuantity = (id) => {
-        setCartItem(cartItem.map(item => {
-            if (item.id === id) {
-                return item.quantity > 1
-                    ? { ...item, quantity: item.quantity - 1 }
-                    : item;   
-            }
-            return item;
-        }));
-    };
+  const removeFromCart = (id) => {
+    setCartItem(cartItem.filter((item) => item.id !== id));
+  };
 
-    // Function to completely remove an item from the cart
-    const removeFromCart = (id) => {
-        setCartItem(cartItem.filter(item => item.id !== id));
-    };
-
-    return (
-        <CartContext.Provider value={{ cartItem, addToCart, decreaseQuantity, removeFromCart }}>
-            {children}
-        </CartContext.Provider>
+  const decreaseQuantity = (id) => {
+    setCartItem(
+      cartItem.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+      )
     );
-};
+  };
+
+  const totalPrice = cartItem.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  return (
+    <CartContext.Provider
+      value={{
+        cartItem,
+        addToCart,
+        removeFromCart,
+        decreaseQuantity,
+        totalPrice,
+        userAddress,
+        setUserAddress, // Allows updates to the address globally
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+}

@@ -15,6 +15,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.2.7",
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.6.0",
     "cra-template-mockbee-ecommerce": "^1.2.0",
     "firebase": "^11.0.2",
     "react": "^18.3.1",

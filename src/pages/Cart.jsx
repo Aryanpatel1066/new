@@ -85,7 +85,17 @@ export default function Cart() {
             <p>Total Price: ₹{totalPrice}</p>
           </div>
         </div>
+        
       )}
+        <div className="flex justify-between mt-4">
+           <NavLink to="/checkout">
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded"
+              >
+                Checkout
+              </button>
+              </NavLink>
+              </div>
     </>
   );
 }
