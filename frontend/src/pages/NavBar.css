@@ -1,0 +1,49 @@
+:root {
+    --primaryColor: #7e22ce;
+    --lightpurple: #faf5ff;
+    --lightBackGroundColor:#d8b4fe;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+}
+.navBarWithBg{
+    background-color:var(--lightBackGroundColor);
+}
+
+.navbar {
+    /* border: 2px solid violet; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navLogo {
+    /* border:2px solid red; */
+    font-size: 1.3em;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--primaryColor);
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.navLinks {
+    padding: 9px;
+    font-size: 22px;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--primaryColor);
+    font-weight: 900;
+
+}
+
+.leftCournerLink {
+    /* border:3px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+ 

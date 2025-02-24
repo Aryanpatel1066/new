@@ -1,0 +1,39 @@
+/* :root{
+    --lightBackgroundColor:#d8b4fe;
+    --fontColor:#121212;
+    --closeColor:#7e22ce;
+}
+.topNavBar{
+    background-color: var(--lightBackgroundColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+    overflow: hidden;
+   }
+.topNavBar .topNavBarHeading{
+    color:var(--fontColor);
+    text-align: center;
+    padding:10px 20px;
+    animation:blink 1.5s infinite;
+
+  }
+  .topNavBar .removeIcon{
+   color:var(--closeColor);
+    font-size: 1.2rem;
+   opacity: 0.8;
+  }
+  .topNavBar .removeIcon:hover{
+    cursor: pointer;
+    opacity: 1;
+  }
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+    */
