@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import cartEmptyImg from "../assets/cartEmptyImg.webp";
+import Header from "../component/Header"
  export default function Cart() {
   const { cartItem, addToCart, removeFromCart, decreaseQuantity } = useContext(CartContext);
 
@@ -9,7 +10,7 @@ import cartEmptyImg from "../assets/cartEmptyImg.webp";
   const totalPrice = cartItem.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <>  
+    <>  <Header/>
        <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Cart Title */}
       <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">

@@ -1,12 +1,18 @@
  
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import { NavLink } from "react-router-dom";
-
+import Header from "../component/Header"
 export default function Checkout() {
   const { cartItem, totalPrice, userAddress } = useContext(CartContext);
-
+  useEffect(() => {
+    if (totalPrice > 0) {
+      localStorage.setItem("totalPrice", totalPrice);
+    }
+  }, [totalPrice]);
   return (
+    <>
+    <Header/>
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Checkout</h1>
 
@@ -56,6 +62,7 @@ export default function Checkout() {
         </NavLink>
       </div>
     </div>
+    </>
   );
 }
 

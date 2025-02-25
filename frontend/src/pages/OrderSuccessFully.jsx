@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Header from "../component/Header"
 export default function OrderSuccessFully() {
     return (
+        <>
+        <Header/>
         <div style={{ textAlign: "center", marginTop: "50px" }}>
             <h1>🎉 Order Successful!</h1>
             <p>Your payment has been processed successfully.</p>
@@ -12,5 +14,6 @@ export default function OrderSuccessFully() {
                 </button>
             </Link>
         </div>
+        </>
     );
 }
