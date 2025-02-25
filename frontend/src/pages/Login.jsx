@@ -53,7 +53,7 @@ function Login() {
       setPassword("");
 
       setTimeout(() => {
-        navigate("/products");
+        navigate("/");
       }, 2000);
       
     } catch (err) {

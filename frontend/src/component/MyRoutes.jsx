@@ -15,13 +15,19 @@ import OrderSuccessFully from "../pages/OrderSuccessFully";
 import ForgotPassword from "../pages/ForgotPassword"
 import VerifyOtp from "../pages/VerifyOtp"
 import ResetPassword from "../pages/ResetPassword"
+import OrderHistory from "../pages/OrderHistory"
+import ProtectedRoute from "./ProtectedRoute";
 export default function MyRoutes() {
   return (
     <Routes>
       <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />
       <Route path="/productlist" element={<ProductList />} />
-      <Route path="/" element={<Home />} />
+      <Route path="/"   element={
+                        <ProtectedRoute>
+                            <Home />
+                        </ProtectedRoute>
+                    } />
       <Route path="*" element={<NotFound />} />
       <Route path="/productdetails/:id" element={<ProductDetails />} />
       <Route path="/register" element={<Register />} />
@@ -31,6 +37,7 @@ export default function MyRoutes() {
         <Route index element={<Navigate to="userDetails" />} /> {/* Default route */}
         <Route path="userDetails" element={<UserDetails />} />
         <Route path="addressDetails" element={<AddressDetail />} />
+        <Route path="orderHistory" element={<OrderHistory/>}/>
       </Route>
       <Route path="/checkout" element={<Checkout/>}></Route>
       <Route path="/handlepayment" element={<HandlePayment/>}/>

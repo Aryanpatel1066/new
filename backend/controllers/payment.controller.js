@@ -49,3 +49,24 @@ exports.processPayment = async (req, res) => {
         res.status(500).json({ success: false, message: "Payment failed", error: error.message });
     }
 };
+exports.getOrders = async (req, res) => {
+    try {
+        const { userId } = req.params; // Assuming userId is passed as a route parameter
+
+        if (!userId) {
+            return res.status(400).json({ success: false, message: "User ID is required" });
+        }
+
+        // Fetch previous orders for the user
+        const orders = await Payment.find({ userId }).sort({ createdAt: -1 });
+
+        if (!orders.length) {
+            return res.status(404).json({ success: false, message: "No previous orders found" });
+        }
+
+        res.status(200).json({ success: true, orders });
+    } catch (error) {
+        console.error("Error fetching orders:", error);
+        res.status(500).json({ success: false, message: "Error fetching orders", error: error.message });
+    }
+};

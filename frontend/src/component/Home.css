@@ -1,4 +1,4 @@
- .newsLetterContainer{
+ /* .newsLetterContainer{
     border:2px solid red;
     background-color: #3b0764;
     color:#fff;
@@ -10,8 +10,7 @@
     margin: 0 1rem;
    }
    .newsLetterContainer h2{
-    /* text-align: center; */
-    font-size: 1.3rem;
+     font-size: 1.3rem;
      font-weight: 700;
      margin-bottom: 1.5rem;
     
@@ -88,4 +87,4 @@
         font-size: 2rem;
          color:#7e22ce;
      }
-      
+       */

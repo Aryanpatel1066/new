@@ -6,9 +6,11 @@ import HeroSection from "../pages/HeroSection";
 import Footer from "../pages/Footer";
 import { ProductDB } from "../data/productDb";
 import { NavLink } from "react-router-dom";
+import menImage from "../assets/men.jpg"
+import girlImage from "../assets/girl.jpg"
+import kidsImage from "../assets/kids.jpg"
 import { CartContext } from "../context/CartContext";
-
-export default function Home() {
+ export default function Home() {
   const [products, setProducts] = useState([]);
   const { cartItem, addToCart } = useContext(CartContext);
   const navigate = useNavigate();
@@ -31,9 +33,9 @@ export default function Home() {
       <div className="py-10 bg-gray-100">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Shop by Category</h2>
         <div className="flex justify-center gap-6">
-          <CategoryCard title="Men" image="/images/men-category.jpg" onClick={() => handleCategoryClick("men")} />
-          <CategoryCard title="Women" image="/images/women-category.jpg" onClick={() => handleCategoryClick("women")} />
-          <CategoryCard title="Kids" image="/images/kids-category.jpg" onClick={() => handleCategoryClick("kids")} />
+          <CategoryCard title="Men" image={menImage} onClick={() => handleCategoryClick("men")} />
+          <CategoryCard title="Women" image={girlImage} onClick={() => handleCategoryClick("women")} />
+          <CategoryCard title="Kids" image={kidsImage} onClick={() => handleCategoryClick("kids")} />
         </div>
       </div>
 

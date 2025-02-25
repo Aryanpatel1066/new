@@ -32,6 +32,7 @@ function UserDetails() {
 
     const handleLogout = () => {
         localStorage.removeItem("user");
+        localStorage.removeItem("userId")
         navigate("/login");
       };
 

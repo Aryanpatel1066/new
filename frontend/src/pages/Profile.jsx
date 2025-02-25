@@ -36,6 +36,18 @@ const Profile = () => {
                   Address Details
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="orderHistory"
+                  className={({ isActive }) =>
+                    `block px-4 py-2 rounded-lg transition-colors duration-300 ${
+                      isActive ? "bg-blue-500 text-white" : "text-gray-700 hover:bg-gray-200"
+                    }`
+                  }
+                >
+                  Order History
+                </NavLink>
+              </li>
             </ul>
           </nav>
 
