@@ -37,9 +37,11 @@ export default function OrderHistory() {
             <h2 className="text-2xl font-bold mb-4">Order History</h2>
 
             {loading && <p>Loading...</p>}
-            {error && <p className="text-red-500">{error}</p>}
-            {orders.length === 0 && !loading && !error && <p>No orders found.</p>}
-
+            {/* {error && <p className="text-red-500">{error}</p>} */}
+            {/* {orders.length === 0 && !loading && !error && <p>No orders found.</p>} */}
+            {!loading && orders.length === 0 && (
+                <p className="text-gray-600">No orders found. (0 orders)</p>
+            )}
             <ul className="space-y-4">
                 {orders.map((order) => (
                     <li key={order.paymentId} className="p-4 border rounded-lg shadow-sm">

@@ -72,6 +72,7 @@ require("./routes/user.route")(app)
 require("./routes/address.route")(app)
 require("./routes/email.route")(app)
 require("./routes/payment.route")(app)
+require("./routes/admin.route")(app)
 app.get("/", (req, res) => {
   res.send("✅ Backend is running successfully!");
 });

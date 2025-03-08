@@ -64,7 +64,12 @@ exports.getOrders = async (req, res) => {
             return res.status(404).json({ success: false, message: "No previous orders found" });
         }
 
-        res.status(200).json({ success: true, orders });
+        // res.status(200).json({ success: true, orders });
+        res.status(200).json({ 
+            success: true, 
+            orders: orders.length ? orders : [], 
+            message: orders.length ? "Orders retrieved successfully" : "No orders found"
+        });
     } catch (error) {
         console.error("Error fetching orders:", error);
         res.status(500).json({ success: false, message: "Error fetching orders", error: error.message });

@@ -1,136 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "../api/apiservices"; // Axios instance
-// import { toast } from "react-toastify"; // Toast notifications
-// import "react-toastify/dist/ReactToastify.css";
-// import "./AddressDetail.css";
-
-// function AddressDetail() {
-//   const [userAddress, setUserAddress] = useState(null);
-//   const [formData, setFormData] = useState({
-//     street: "",
-//     city: "",
-//     state: "",
-//     country: "",
-//     pincode: "",
-//     phone: "",
-//   });
-//   const [isEditing, setIsEditing] = useState(false);
-//   const [loading, setLoading] = useState(true);
-
-//   // ✅ Get userId from localStorage
-//   const userId = localStorage.getItem("userId");
-
-//   useEffect(() => {
-//     if (!userId) {
-//       toast.error("User ID not found! Please log in.", { position: "top-right" });
-//       setLoading(false);
-//       return;
-//     }
-
-//     const fetchAddress = async () => {
-//       try {
-//         const response = await axios.get(`/address/${userId}`);
-//         if (response.data.addresses.length > 0) {
-//           setUserAddress(response.data.addresses[0]); // Store fetched address
-//           setFormData(response.data.addresses[0]); // Pre-fill form
-//         }
-//       } catch (error) {
-//         console.error("❌ Error fetching address:", error);
-//         toast.error("Failed to load address!", { position: "top-right" });
-//       }
-//       setLoading(false);
-//     };
-
-//     fetchAddress();
-//   }, [userId]);
-
-//   // Handle form input changes
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
-
-//   // ✅ Validate all fields before saving
-//   const validateFields = () => {
-//     const { street, city, state, country, pincode, phone } = formData;
-//     if (!street || !city || !state || !country || !pincode || !phone) {
-//       toast.error("All fields are required!", { position: "top-right" });
-//       return false;
-//     }
-//     return true;
-//   };
-
-//   // ✅ Save or Update Address with Validation
-//   const handleSave = async () => {
-//     if (!validateFields()) return; // Stop if validation fails
-
-//     try {
-//       if (!userId) {
-//         toast.error("User ID is missing!", { position: "top-right" });
-//         return;
-//       }
-
-//       let response;
-//       if (userAddress) {
-//         // Update existing address
-//         response = await axios.put(`/address/${userAddress._id}`, formData);
-//         toast.success("Address updated successfully!", { position: "top-right" });
-//       } else {
-//         // Create new address
-//         response = await axios.post(`/address/${userId}`, formData);
-//         setUserAddress(response.data.address); // Store created address
-//         toast.success("Address saved successfully!", { position: "top-right" });
-//       }
-
-//       setIsEditing(false);
-//     } catch (error) {
-//       console.error("❌ Error saving address:", error);
-//       toast.error("Failed to save address!", { position: "top-right" });
-
-//       // Debugging: Log error details
-//       if (error.response) {
-//         console.error("Server Response:", error.response.data);
-//       }
-//     }
-//   };
-
-//   return (
-//     <div className="account-details-container">
-//       {loading ? (
-//         <p>Loading...</p>
-//       ) : !userAddress || isEditing ? (
-//         <div className="edit-modal">
-//           <div className="modal-content">
-//             <h2>{userAddress ? "Edit Address" : "Enter Your Address"}</h2>
-//             <input type="text" name="street" value={formData.street} onChange={handleInputChange} placeholder="Street" required />
-//             <input type="text" name="city" value={formData.city} onChange={handleInputChange} placeholder="City" required />
-//             <input type="text" name="state" value={formData.state} onChange={handleInputChange} placeholder="State" required />
-//             <input type="text" name="country" value={formData.country} onChange={handleInputChange} placeholder="Country" required />
-//             <input type="text" name="pincode" value={formData.pincode} onChange={handleInputChange} placeholder="Pincode" required />
-//             <input type="text" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="Phone" required />
-//             <div className="modal-buttons">
-//               <button className="save-btn" onClick={handleSave}>Save</button>
-//               <button className="cancel-btn" onClick={() => { setIsEditing(false); setFormData(userAddress || formData); }}>Cancel</button>
-//             </div>
-//           </div>
-//         </div>
-//       ) : (
-//         <div className="address-details">
-//           <h2>Saved Address</h2>
-//           <p>{userAddress.street}, {userAddress.city}, {userAddress.state}, {userAddress.country}</p>
-//           <p><strong>Pincode:</strong> {userAddress.pincode}</p>
-//           <p><strong>Phone Number:</strong> {userAddress.phone}</p>
-//           <div className="buttons">
-//             <button className="edit-btn" onClick={() => setIsEditing(true)}>Edit</button>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default AddressDetail;
-
 import React, { useEffect, useState, useContext } from "react";
 import axios from "../api/apiservices"; // Axios instance
 import { CartContext } from "../context/CartContext"; // Import CartContext
@@ -140,7 +7,12 @@ import "./AddressDetail.css";
 
 function AddressDetail() {
   const { userAddress, setUserAddress } = useContext(CartContext); // Access global address state
-  const [formData, setFormData] = useState(userAddress);
+
+  // ✅ Provide a default object to prevent null errors
+  const [formData, setFormData] = useState(userAddress || { 
+    street: "", city: "", state: "", country: "", pincode: "", phone: "" 
+  });
+
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -156,9 +28,14 @@ function AddressDetail() {
     const fetchAddress = async () => {
       try {
         const response = await axios.get(`/address/${userId}`);
+        
         if (response.data.addresses.length > 0) {
           setUserAddress(response.data.addresses[0]); // Update global state
           setFormData(response.data.addresses[0]); // Pre-fill form
+        } else {
+          // ✅ If no address exists, set empty defaults
+          setUserAddress({});
+          setFormData({ street: "", city: "", state: "", country: "", pincode: "", phone: "" });
         }
       } catch (error) {
         console.error("❌ Error fetching address:", error);
@@ -194,7 +71,7 @@ function AddressDetail() {
       }
 
       let response;
-      if (userAddress) {
+      if (userAddress?.street) { // ✅ Check if address exists before updating
         response = await axios.put(`/address/${userAddress._id}`, formData);
         toast.success("Address updated successfully!", { position: "top-right" });
       } else {
@@ -215,10 +92,10 @@ function AddressDetail() {
     <div className="account-details-container">
       {loading ? (
         <p>Loading...</p>
-      ) : !userAddress || isEditing ? (
+      ) : !userAddress?.street || isEditing ? ( // ✅ Safe check using optional chaining
         <div className="edit-modal">
           <div className="modal-content">
-            <h2>{userAddress ? "Edit Address" : "Enter Your Address"}</h2>
+            <h2>{userAddress?.street ? "Edit Address" : "Enter Your Address"}</h2>
             <input type="text" name="street" value={formData.street} onChange={handleInputChange} placeholder="Street" required />
             <input type="text" name="city" value={formData.city} onChange={handleInputChange} placeholder="City" required />
             <input type="text" name="state" value={formData.state} onChange={handleInputChange} placeholder="State" required />
@@ -227,16 +104,16 @@ function AddressDetail() {
             <input type="text" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="Phone" required />
             <div className="modal-buttons">
               <button className="save-btn" onClick={handleSave}>Save</button>
-              <button className="cancel-btn" onClick={() => { setIsEditing(false); setFormData(userAddress || formData); }}>Cancel</button>
+              <button className="cancel-btn" onClick={() => { setIsEditing(false); setFormData(userAddress || {}); }}>Cancel</button>
             </div>
           </div>
         </div>
       ) : (
         <div className="address-details">
           <h2>Saved Address</h2>
-          <p>{userAddress.street}, {userAddress.city}, {userAddress.state}, {userAddress.country}</p>
-          <p><strong>Pincode:</strong> {userAddress.pincode}</p>
-          <p><strong>Phone Number:</strong> {userAddress.phone}</p>
+          <p>{userAddress?.street}, {userAddress?.city}, {userAddress?.state}, {userAddress?.country}</p>
+          <p><strong>Pincode:</strong> {userAddress?.pincode}</p>
+          <p><strong>Phone Number:</strong> {userAddress?.phone}</p>
           <div className="buttons">
             <button className="edit-btn" onClick={() => setIsEditing(true)}>Edit</button>
           </div>

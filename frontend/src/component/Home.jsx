@@ -6,9 +6,9 @@ import HeroSection from "../pages/HeroSection";
 import Footer from "../pages/Footer";
 import { ProductDB } from "../data/productDb";
 import { NavLink } from "react-router-dom";
-import menImage from "../assets/men.jpg"
-import girlImage from "../assets/girl.jpg"
-import kidsImage from "../assets/kids.jpg"
+import menImage from "../assets/men3.jpg"
+import girlImage from "../assets/girl2.jpg"
+import kidsImage from "../assets/kids2.jpg"
 import { CartContext } from "../context/CartContext";
  export default function Home() {
   const [products, setProducts] = useState([]);

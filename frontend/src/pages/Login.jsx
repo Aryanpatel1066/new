@@ -24,11 +24,12 @@ function Login() {
 
       console.log("API Response:", response.data); 
       
-      const { name, userId, message ,accessToken} = response.data;
+      const { name, userId, message ,accessToken,userType} = response.data;
       localStorage.setItem("userId", userId);
       localStorage.setItem("user", JSON.stringify({ name, email }));
       localStorage.setItem("accessToken", accessToken);
-    
+      localStorage.setItem("userType",userType)
+      console.log("user type",localStorage.getItem("userType"))
       console.log("Stored User:", localStorage.getItem("user"));
       console.log("Stored UserID:", localStorage.getItem("userId"));
       console.log("Stored Token:", localStorage.getItem("accessToken"));
@@ -52,9 +53,19 @@ function Login() {
       setEmail("");
       setPassword("");
 
+      // setTimeout(() => {
+      //   navigate("/");
+      // }, 2000);
       setTimeout(() => {
-        navigate("/");
-      }, 2000);
+        if (response.data.userType === "ADMIN") {
+            console.log("✅ Redirecting Admin to Dashboard...");
+            navigate("/dashboard");
+        } else {
+            console.log("✅ Redirecting Customer to Home...");
+            navigate("/");
+        }
+    }, 500); // Delay to ensure localStorage updates first
+    
       
     } catch (err) {
       console.error("Login Error:", err.response?.data || err.message);

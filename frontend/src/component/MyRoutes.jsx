@@ -17,6 +17,8 @@ import VerifyOtp from "../pages/VerifyOtp"
 import ResetPassword from "../pages/ResetPassword"
 import OrderHistory from "../pages/OrderHistory"
 import ProtectedRoute from "./ProtectedRoute";
+import Dashboard from "./Dashboard";
+import AdminRoute from "./AdminRoute";
 export default function MyRoutes() {
   return (
     <Routes>
@@ -47,7 +49,9 @@ export default function MyRoutes() {
        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/verify-otp" element={<VerifyOtp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        
+         
+        <Route path="/dashboard" element={<AdminRoute><Dashboard /></AdminRoute>} />
+
     </Routes>
   );
 }

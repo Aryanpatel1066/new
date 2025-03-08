@@ -77,6 +77,7 @@ exports.signin = async (req, res) => {
       email: user.email,
       userId:user._id,
        accessToken: token,
+       userType:user.userType
     });
   } catch (err) {
     console.error(err);
