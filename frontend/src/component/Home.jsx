@@ -32,7 +32,7 @@ import { CartContext } from "../context/CartContext";
       {/* Category Cards Section */}
       <div className="py-10 bg-gray-100">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Shop by Category</h2>
-        <div className="flex justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6 sm:flex-row">
           <CategoryCard title="Men" image={menImage} onClick={() => handleCategoryClick("men")} />
           <CategoryCard title="Women" image={girlImage} onClick={() => handleCategoryClick("women")} />
           <CategoryCard title="Kids" image={kidsImage} onClick={() => handleCategoryClick("kids")} />
@@ -72,13 +72,13 @@ import { CartContext } from "../context/CartContext";
       <div className="bg-purple-900 text-white text-center py-10">
         <h2 className="text-3xl font-bold">Newsletter</h2>
         <p className="text-gray-300 mt-2">Get timely updates from your favorite products.</p>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center sm:flex-row sm:gap-0 mt-4">
           <input
             type="email"
             placeholder="Your email"
-            className="px-4 py-2 w-80 rounded-l-lg border-none focus:ring-2 focus:ring-purple-500 outline-none text-black"
+            className="px-4 py-2 w-80 rounded-l-lg border-none focus:ring-2 focus:ring-purple-500 outline-none text-black     "
           />
-          <button className="bg-white text-purple-700 font-semibold px-6 py-2 rounded-r-lg hover:bg-gray-200 transition">
+          <button className="bg-white text-purple-700 font-semibold px-6 py-2 rounded-r-lg hover:bg-gray-200 transition sm:w-20">
             Send
           </button>
         </div>

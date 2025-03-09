@@ -47,3 +47,39 @@ body {
 }
 
  
+/* Hamburger Icon */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primaryColor);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 406px) {
+    .hamburger {
+        display: block;
+        /* border:2px solid red; */
+        margin: 0 1rem;
+    }
+
+    .leftCournerLink {
+        position: absolute;
+        top: 45px;
+        right: 0;
+        background: var(--lightBackGroundColor);
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        align-items: center;
+        gap: 15px;
+        padding: 20px;
+        display: none;
+        /* border:2px solid blue; */
+        z-index: 2;
+    }
+
+    .leftCournerLink.open {
+        display: flex;
+    }
+}

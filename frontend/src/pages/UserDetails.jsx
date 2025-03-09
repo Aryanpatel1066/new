@@ -1,8 +1,5 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import "./Profile.css";
-import Header from "../component/Header";
 
 function UserDetails() {
     const navigate = useNavigate();
@@ -14,11 +11,10 @@ function UserDetails() {
         setUser(storedUser ? JSON.parse(storedUser) : null);
     };
 
-    // Run once on mount and listen for user changes
+    // Fetch user on component mount
     useEffect(() => {
         fetchUser();
 
-        // Listen for login/logout changes
         const handleAuthChange = () => {
             fetchUser();
         };
@@ -32,29 +28,32 @@ function UserDetails() {
 
     const handleLogout = () => {
         localStorage.removeItem("user");
-        localStorage.removeItem("userId")
+        localStorage.removeItem("userId");
         navigate("/login");
-      };
+    };
 
     return (
-        <>               
- 
-          <div className="account-details-container">
+        <div className="flex items-center justify-center    px-4">
+            <div className="bg-white shadow-lg rounded-lg p-6 md:p-10 w-full max-w-md text-center">
+                
+                
+                <div className="border-b pb-4">
+                    <p className="text-lg font-semibold text-gray-700">
+                        <span className="text-purple-600">Name:</span> {user?.name || "User"}
+                    </p>
+                    <p className="text-lg font-semibold text-gray-700 mt-2">
+                        <span className="text-purple-600">Email:</span> {user?.email || "Not Available"}
+                    </p>
+                </div>
 
-            <div className="address-details">
-                <h2 className="fullName">
-                    <strong className="highlightText">Name:</strong> {user?.name || "User"}
-                </h2>
-                <p>
-                    <strong className="highlightText">Email:</strong> {user?.email || "Not Available"}
-                </p>
-                <button onClick={handleLogout} className="logoutButton">
+                <button 
+                    onClick={handleLogout} 
+                    className="mt-6 w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition"
+                >
                     Logout
                 </button>
             </div>
         </div>
-        </>
-
     );
 }
 
